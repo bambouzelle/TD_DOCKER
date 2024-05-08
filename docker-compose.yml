@@ -2,29 +2,31 @@ version: '3.8'
 services:
   bff:
     build: 
-      context: ./bff/target
+      context: ./bff
       dockerfile: Dockerfile
     depends_on:
-      - mysql
+      - mariadb
     environment:
-      DB_HOST: mysql
-      DB_USER: root
-      DB_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: docker
+    volumes:
+      - ./bff/target/application-docker.properties:/app/application-docker.properties
     networks:
       - backend
 
   frontend:
-    build: ./front/browser
+    build: ./front
     ports:
       - "80:80"
     networks:
       - webnet
 
-  mysql:
-    image: mysql:5.7
+  mariadb:
+    image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: USER
+      MYSQL_PASSWORD: PASSWORD
+      MYSQL_ROOT_PASSWORD: ROOT_PASSWORD
+      MYSQL_DATABASE: docker
     ports:
       - "3306:3306"
     networks:
@@ -34,3 +36,5 @@ networks:
   webnet:
   backend:
 
+volumes:
+  db_data:
