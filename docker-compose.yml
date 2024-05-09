@@ -12,6 +12,8 @@ services:
       - ./bff/target/application-docker.properties:/app/application-docker.properties
     networks:
       - backend
+    ports:
+      - 8080:8080
 
   frontend:
     build: ./front
@@ -29,6 +31,19 @@ services:
       MYSQL_DATABASE: docker
     ports:
       - "3306:3306"
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: USER
+      PMA_PASSWORD: PASSWORD
+    ports:
+      - "8081:80"
     networks:
       - backend
 

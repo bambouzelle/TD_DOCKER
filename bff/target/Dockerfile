@@ -1,4 +1,4 @@
-FROM amazoncorretto:21.0.2
+FROM openjdk:11-jre-slim
 
 WORKDIR /app
 
