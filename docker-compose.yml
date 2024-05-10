@@ -1,5 +1,16 @@
 version: '3.8'
 services:
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_USER: USER
+      MYSQL_PASSWORD: PASSWORD
+      MYSQL_ROOT_PASSWORD: ROOT_PASSWORD
+      MYSQL_DATABASE: docker
+    networks:
+      - backend
+
   bff:
     build: 
       context: ./bff
@@ -21,18 +32,6 @@ services:
       - "80:80"
     networks:
       - webnet
-
-  mariadb:
-    image: mariadb:latest
-    environment:
-      MYSQL_USER: USER
-      MYSQL_PASSWORD: PASSWORD
-      MYSQL_ROOT_PASSWORD: ROOT_PASSWORD
-      MYSQL_DATABASE: docker
-    ports:
-      - "3306:3306"
-    networks:
-      - backend
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
