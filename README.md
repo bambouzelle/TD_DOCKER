@@ -10,7 +10,7 @@ Le projet utilise `docker-compose` pour orchestrer les différents services. Vou
 
 ## Structure du projet
 
-- `bff/` : Contient le Dockerfile et le code source du BfF.
+- `bff/` : Contient le Dockerfile et le code source du BFF.
 - `front/` : Contient le code source du frontend (non détaillé ici).
 - `docker-compose.yml` : Fichier de configuration qui définit les services, réseaux et volumes.
 
