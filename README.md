@@ -22,3 +22,8 @@ Pour démarrer tous les services, exécutez la commande suivante dans le répert
 docker-compose up
 ```
 le projet a un petit souci il n'arrive pas à ce lancer la première fois (on est obliger de le rlancer pour qu'il marche)
+
+voici les lien dockerhub des images:
+
+pour le front: https://hub.docker.com/r/bambouzelle/front
+pour le BFF : https://hub.docker.com/r/bambouzelle/bff
